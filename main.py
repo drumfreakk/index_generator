@@ -34,16 +34,22 @@ def get_page(reader, page):
 index = {}
 
 for i in range(len(reader.pages)):
+	had_words = []
 	for word in get_page(reader, i).split():
 		word = word.lower().translate(str.maketrans('','',"!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~”“’‘"))
-		if word not in words:
+		if (word not in words) and (word not in had_words) and (len(word) > 1):
 			if word in index:
 				index[word].append(i)
 			else:
 				index[word] = [i]
+			had_words.append(word)
+
 index = dict(sorted(index.items()))
 
 #print(index)
 
-for i in index:
-	print(i)
+for key,val in index.items():
+	out = key + '\t'
+	for i in val:
+		out += str(i) + ','
+	print(out[:-1])
