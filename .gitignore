@@ -1,1 +1,3 @@
-text.*
+*.pdf
+*.txt
+!1000-words.txt
