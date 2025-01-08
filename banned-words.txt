@@ -1,0 +1,5 @@
+ln
+sin
+cos
+sinh
+cosh
